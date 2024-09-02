@@ -1,0 +1,148 @@
+<html>
+<head>
+    <title>Event Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f8f9fa;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .inputbox {
+            margin-bottom: 15px;
+        }
+
+        .inputbox input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .inputbox input:focus {
+            border-color: #007bff;
+        }
+
+        .inputbox label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .success-message {
+            text-align: center;
+            color: green;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <form id="registrationForm">
+            <h2>Event Registration</h2>
+            
+            <div class="inputbox">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" name="firstName">
+            </div>
+            
+            <div class="inputbox">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" name="lastName">
+            </div>
+            
+            <div class="inputbox">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email">
+            </div>
+            
+            <div class="inputbox">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone">
+            </div>
+            
+            <button type="submit" class="submit-btn">Register</button>
+            
+            <div id="successMessage" class="success-message" style="display: none;">
+                Thank you for registering!
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('registrationForm');
+        const successMessage = document.getElementById('successMessage');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const firstName = document.getElementById('firstName').value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phoneNumber = document.getElementById('phone').value.trim();
+
+            if (firstName === '') {
+                alert("First name is required.");
+                return;
+            }
+            if (lastName === '') {
+                alert("Last name is required.");
+                return;
+            }
+            if (email === '') {
+                alert("Email is required.");
+                return;
+            }
+            if (phoneNumber === '') {
+                alert("Phone number is required.");
+                return;
+            }
+            if (phoneNumber.length !== 10) {
+                alert("Enter a valid 10-digit phone number.");
+                return;
+            }
+
+            successMessage.style.display = 'block';
+            form.reset();
+        });
+    </script>
+
+</body>
+</html>
